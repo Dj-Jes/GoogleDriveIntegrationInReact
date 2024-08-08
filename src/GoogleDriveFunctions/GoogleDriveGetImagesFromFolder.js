@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 const API_KEY = 'AIzaSyAS_CrC2-YPEABCxi2Ax5RgitXa2v5PCRs'; // Replace with your API key
 const FOLDER_ID = '1P9cxR-aq2yVkdnJfqQnRlyHkzW4wx8QH'; // Replace with your folder ID
 
-const GoogleDrive = ({ setImages }) => {
+const GoogleDriveGetImagesFromFolder = ({ setImages }) => {
     useEffect(() => {
         const fetchFiles = async () => {
             try {
@@ -17,7 +17,7 @@ const GoogleDrive = ({ setImages }) => {
                 const data = await response.json();
                 const files = data.files;
 
-                // Convert each file to base64 URL
+                // Convert each file to base64
                 const imagePromises = files.map(async (file) => {
                     const downloadUrl = `https://www.googleapis.com/drive/v3/files/${file.id}?alt=media&key=${API_KEY}`;
                     const fileResponse = await fetch(downloadUrl);
@@ -46,4 +46,4 @@ const GoogleDrive = ({ setImages }) => {
     return null;
 };
 
-export default GoogleDrive;
+export default GoogleDriveGetImagesFromFolder;
