@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './Styles.css';
+import '../../Styles.css';
 
 const PhotoGallery = ({ images }) => {
     useEffect(() => {
