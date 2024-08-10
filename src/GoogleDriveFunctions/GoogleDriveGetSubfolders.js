@@ -28,6 +28,7 @@ const GoogleDriveGetSubfolders = ({ setSubfolders }) => {
                         id: folder.id,
                         name: folder.name,
                     }));
+                    console.log(subfolders.id)
                     setSubfolders(subfolderData);
                 } else {
                     console.log('No subfolders found.');
