@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const API_KEY = 'AIzaSyAS_CrC2-YPEABCxi2Ax5RgitXa2v5PCRs'; // Replace with your API key
+const API_KEY = ; // Replace with your API key
 
 const GoogleDriveGetImagesFromSubfolder = ({ folderId, setImages }) => {
     useEffect(() => {
