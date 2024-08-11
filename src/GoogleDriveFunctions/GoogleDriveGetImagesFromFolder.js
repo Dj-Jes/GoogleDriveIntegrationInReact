@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 
+const API_KEY = ;// Replace with your API key
+const FOLDER_ID = ;// Replace with your folder ID
+
 // Do not use this anymore, this was a test and the folder here is hardcoded, it's still in use due to testing
 const GoogleDriveGetImagesFromFolder = ({ setImages }) => {
     useEffect(() => {
