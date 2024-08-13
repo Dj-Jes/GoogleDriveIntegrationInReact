@@ -31,7 +31,7 @@ function App() {
             <GoogleDriveGetImagesFromFolder setImages={setImages}/>
 
             <h2>Predefined Images</h2>
-            <PhotoGallery images={images}/>
+            {/*<PhotoGallery images={images}/>*/}
 
             <h2>Folders</h2>
             <FolderGallery folders={subFolders} onFolderClick={handleFolderClick}/>
