@@ -1,4 +1,3 @@
-// GoogleDriveFunctions/GoogleDriveGetSubfolders.js
 const API_KEY = 'AIzaSyAS_CrC2-YPEABCxi2Ax5RgitXa2v5PCRs';
 const FOLDER_ID = '12yz1oOKP4sqkJdL8_JPXjMfkM8p98VDu';
 

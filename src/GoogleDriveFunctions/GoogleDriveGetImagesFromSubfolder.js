@@ -1,4 +1,3 @@
-// GoogleDriveFunctions/GoogleDriveGetImagesFromSubfolder.js
 const API_KEY = 'AIzaSyAS_CrC2-YPEABCxi2Ax5RgitXa2v5PCRs';
 
 const fetchImagesFromSubfolder = async (folderId, setImages) => {
