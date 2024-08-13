@@ -6,57 +6,77 @@ import PhotoGallery from "./Components/DisplayComponent/PhotoGallery";
 import GoogleDriveGetImagesFromSubfolder from './GoogleDriveFunctions/GoogleDriveGetImagesFromSubfolder';
 import GoogleDriveGetDocFile from "./GoogleDriveFunctions/GoogleDriveGetDocFile";
 
+
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+} from "react-router-dom";
+
+import NavBar from "./NavBar/NavBar";
+import HomePage from "./Pages/HomePage";
+import FolderPage from "./Pages/FolderPage";
+
 function App() {
-    const [images, setImages] = useState([]);
-    const [subFolders, setSubFolders] = useState([]);
-    const [selectedFolderId, setSelectedFolderId] = useState(null);
-    const [selectedFolderImages, setSelectedFolderImages] = useState([]);
-
-    const docFileId = "1Qb2zZy56xJImlaAyz9Y-tzJKVWnzvvcsxT-HC7UuMIo"; // Replace with your file ID
-
-
-    const handleFolderClick = (folderId) => {
-        // Set the selected folder ID
-        setSelectedFolderId(folderId);
-        // Fetch images from the clicked folder
-        setSelectedFolderImages([]);
-        return <GoogleDriveGetImagesFromSubfolder folderId={folderId} setImages={setSelectedFolderImages}/>;
-    };
-
+    // const [images, setImages] = useState([]);
+    // const [subFolders, setSubFolders] = useState([]);
+    // const [selectedFolderId, setSelectedFolderId] = useState(null);
+    // const [selectedFolderImages, setSelectedFolderImages] = useState([]);
+    //
+    // const docFileId = "1Qb2zZy56xJImlaAyz9Y-tzJKVWnzvvcsxT-HC7UuMIo"; // Replace with your file ID
+    //
+    //
+    // const handleFolderClick = (folderId) => {
+    //     // Set the selected folder ID
+    //     setSelectedFolderId(folderId);
+    //     // Fetch images from the clicked folder
+    //     setSelectedFolderImages([]);
+    //     return <GoogleDriveGetImagesFromSubfolder folderId={folderId} setImages={setSelectedFolderImages}/>;
+    // };
+    //
+    // return (
+    //     <div className="App">
+    //         <h1>Photo Gallery</h1>
+    //
+    //         <GoogleDriveGetSubFolders setSubfolders={setSubFolders}/>
+    //         <GoogleDriveGetImagesFromFolder setImages={setImages}/>
+    //
+    //         <h2>Predefined Images</h2>
+    //         {/*<PhotoGallery images={images}/>*/}
+    //
+    //         <h2>Folders</h2>
+    //         <FolderGallery folders={subFolders} onFolderClick={handleFolderClick}/>
+    //
+    //         {selectedFolderId && (
+    //             <div>
+    //                 <h2>Selected Folder ID: {selectedFolderId}</h2>
+    //                 <GoogleDriveGetImagesFromSubfolder folderId={selectedFolderId} setImages={setSelectedFolderImages}/>
+    //             </div>
+    //         )}
+    //
+    //         {selectedFolderImages.length > 0 && (
+    //             <div>
+    //                 <h2>Images in Selected Folder</h2>
+    //                 <PhotoGallery images={selectedFolderImages}/>
+    //             </div>
+    //         )}
+    //
+    //         {docFileId && (
+    //             <div>
+    //                 <h1>Google Doc Content</h1>
+    //                 <GoogleDriveGetDocFile docFileId={docFileId} />
+    //             </div>
+    //         )}
+    //     </div>
+    // );
     return (
-        <div className="App">
-            <h1>Photo Gallery</h1>
-
-            <GoogleDriveGetSubFolders setSubfolders={setSubFolders}/>
-            <GoogleDriveGetImagesFromFolder setImages={setImages}/>
-
-            <h2>Predefined Images</h2>
-            {/*<PhotoGallery images={images}/>*/}
-
-            <h2>Folders</h2>
-            <FolderGallery folders={subFolders} onFolderClick={handleFolderClick}/>
-
-            {selectedFolderId && (
-                <div>
-                    <h2>Selected Folder ID: {selectedFolderId}</h2>
-                    <GoogleDriveGetImagesFromSubfolder folderId={selectedFolderId} setImages={setSelectedFolderImages}/>
-                </div>
-            )}
-
-            {selectedFolderImages.length > 0 && (
-                <div>
-                    <h2>Images in Selected Folder</h2>
-                    <PhotoGallery images={selectedFolderImages}/>
-                </div>
-            )}
-
-            {docFileId && (
-                <div>
-                    <h1>Google Doc Content</h1>
-                    <GoogleDriveGetDocFile docFileId={docFileId} />
-                </div>
-            )}
-        </div>
+        <Router>
+            <NavBar />
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/subFolders" element={<FolderPage />} />
+            </Routes>
+        </Router>
     );
 }
 
