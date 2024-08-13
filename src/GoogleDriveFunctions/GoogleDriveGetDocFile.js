@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const API_KEY = 'AIzaSyAS_CrC2-YPEABCxi2Ax5RgitXa2v5PCRs'; // Replace with your API key
+import {API_KEY} from "../SharedRecources";
 
 const GoogleDriveGetDocFile = ({ docFileId }) => {
     const [sections, setSections] = useState([]);

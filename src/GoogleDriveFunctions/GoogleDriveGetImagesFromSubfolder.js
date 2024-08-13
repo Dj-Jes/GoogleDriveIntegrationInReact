@@ -1,4 +1,4 @@
-const API_KEY = 'AIzaSyAS_CrC2-YPEABCxi2Ax5RgitXa2v5PCRs';
+import {API_KEY} from "../SharedRecources";
 
 const fetchImagesFromSubfolder = async (folderId, setImages) => {
     try {

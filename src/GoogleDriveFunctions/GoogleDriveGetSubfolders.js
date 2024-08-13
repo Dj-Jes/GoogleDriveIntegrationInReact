@@ -1,10 +1,10 @@
-const API_KEY = 'AIzaSyAS_CrC2-YPEABCxi2Ax5RgitXa2v5PCRs';
-const FOLDER_ID = '12yz1oOKP4sqkJdL8_JPXjMfkM8p98VDu';
+import {FOLDER_ID_TO_SUB_FOLDERS, API_KEY} from "../SharedRecources";
+
 
 const fetchSubfolders = async (setSubfolders) => {
     try {
         const response = await fetch(
-            `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}' in parents and mimeType = 'application/vnd.google-apps.folder'&key=${API_KEY}`
+            `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID_TO_SUB_FOLDERS}' in parents and mimeType = 'application/vnd.google-apps.folder'&key=${API_KEY}`
         );
         if (!response.ok) {
             throw new Error(`Error fetching subfolders: ${response.statusText}`);
