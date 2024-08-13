@@ -3,8 +3,6 @@ import React, { useEffect } from 'react';
 const API_KEY = 'AIzaSyAS_CrC2-YPEABCxi2Ax5RgitXa2v5PCRs'; // Replace with your API key
 const FOLDER_ID = '1P9cxR-aq2yVkdnJfqQnRlyHkzW4wx8QH'; // Replace with your folder ID
 
-
-//testing
 // Do not use this anymore, this was a test and the folder here is hardcoded, it's still in use due to testing
 const GoogleDriveGetImagesFromFolder = ({ setImages }) => {
     useEffect(() => {
