@@ -10,6 +10,7 @@ import {
 import NavBar from "./NavBar/NavBar";
 import HomePage from "./Pages/HomePage";
 import FolderPage from "./Pages/FolderPage";
+import FolderPageTest from "./Pages/FolderPageTest";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/subFolders" element={<FolderPage />} />
+                <Route path="/subFoldersTest" element={<FolderPageTest />} />
             </Routes>
         </Router>
     );
