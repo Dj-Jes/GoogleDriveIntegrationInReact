@@ -5,7 +5,7 @@ import PhotoGallery from '../Components/DisplayComponent/PhotoGallery';
 import FolderGallery from "../Components/DisplayComponent/FolderGallery";
 import useImageCache from '../Cache/useImageCache';
 
-const FolderPageTest = () => {
+const Projects = () => {
     const [subFolders, setSubFolders] = useState([]);
     const [selectedFolderId, setSelectedFolderId] = useState(null);
     const [imageIds, setImageIds] = useState([]);
@@ -70,4 +70,4 @@ const FolderPageTest = () => {
     );
 };
 
-export default FolderPageTest;
+export default Projects;

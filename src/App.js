@@ -10,7 +10,7 @@ import {
 import NavBar from "./NavBar/NavBar";
 import HomePage from "./Pages/HomePage";
 import FolderPage from "./Pages/FolderPage";
-import FolderPageTest from "./Pages/FolderPageTest";
+import Projects from "./Pages/Projects";
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/subFolders" element={<FolderPage />} />
-                <Route path="/subFoldersTest" element={<FolderPageTest />} />
+                <Route path="/Projects" element={<Projects />} />
             </Routes>
         </Router>
     );
