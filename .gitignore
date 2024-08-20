@@ -11,6 +11,9 @@
 # production
 /build
 
+# keys
+SharedRecources.js
+
 # misc
 .DS_Store
 .env.local
