@@ -1,5 +1,3 @@
-
-
 /* Folder list styles */
 .folder-list {
     margin-bottom: 20px;
@@ -82,7 +80,7 @@
     }
 }
 
-
+/* Folder gallery styles */
 .folder-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -102,4 +100,104 @@
 
 .folder:hover {
     background-color: #e5e5e5;
+}
+
+/* HomePage styles */
+.homepage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Document content container */
+.doc-content {
+    grid-column: 1 / span 2; /* Span both columns */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Document section styles */
+.doc-section {
+    margin-bottom: 20px;
+}
+
+.doc-section h3 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.doc-section p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Image gallery within homepage */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Adjust this based on the number of images */
+    gap: 10px;
+    grid-column: 1 / span 2; /* Span both columns */
+}
+
+.gallery-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Custom layout for sections with images */
+.doc-section-with-image {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.doc-section-with-image .doc-section {
+    flex: 1;
+}
+
+.doc-section-with-image .section-image {
+    flex: 1;
+    max-width: 300px; /* Limit the size of the image */
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Adjust grid layout for smaller screens */
+@media (max-width: 768px) {
+    .homepage {
+        grid-template-columns: 1fr;
+    }
+
+    .image-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .doc-section-with-image {
+        flex-direction: column;
+    }
+
+    .section-image {
+        max-width: 100%; /* Make the image responsive */
+    }
+}
+
+@media (max-width: 480px) {
+    .image-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .doc-section h3 {
+        font-size: 1.2rem;
+    }
+
+    .doc-section p {
+        font-size: 0.9rem;
+    }
 }
