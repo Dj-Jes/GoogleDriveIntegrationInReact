@@ -27,7 +27,7 @@ const GoogleDriveGetDocWithMixedContent = ({ docFileId }) => {
                     const marker = sectionMatches[i]?.trim();
 
                     // Check if it's an image marker
-                    const imageMatch = marker.match(/^IMAGE (right|left|center): (.+)$/);
+                    const imageMatch = marker.match(/^IMAGE (right|left|center|under): (.+)$/);
                     if (imageMatch) {
                         const position = imageMatch[1];
                         const imageId = imageMatch[2];
