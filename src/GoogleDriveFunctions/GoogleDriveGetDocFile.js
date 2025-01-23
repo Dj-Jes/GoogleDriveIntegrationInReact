@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { API_KEY } from "../SharedRecources";
 import GoogleDriveFetchImagesByIds from "./GoogleDriveFetchImagesByIds";
 
@@ -16,26 +16,35 @@ const GoogleDriveGetDocFile = ({ docFileId }) => {
                 }
                 const content = await response.text();
 
-                // Extract all image IDs from the content
-                const imageMatches = [...content.matchAll(/\[\*?IMAGE (?:right|left|center)?: ([a-zA-Z0-9-_]+)(?::[\d%]+)?\*\]/g)];
-                const imageIds = imageMatches.map(match => match[1]);
+                // Adjust regex for image placeholders
+                const imageRegex = /\[\*?IMAGE\s*(right|left|center)?\s*:\s*([a-zA-Z0-9-_]+)(?:\s*:\s*([\d%]+))?\*\]/g;
+                const imageMatches = [...content.matchAll(imageRegex)];
+                console.log("Image Matches:", imageMatches);
+
+                // Extract image IDs from the matches
+                const imageIds = imageMatches.map((match) => match[2]);
+                console.log("Extracted Image IDs:", imageIds);
 
                 // Fetch all image URLs
                 const imageUrls = await GoogleDriveFetchImagesByIds(imageIds);
+                console.log("Fetched Image URLs:", imageUrls);
 
-                // Replace image placeholders with actual image URLs
+                // Replace image placeholders with actual image tags
                 const contentWithImages = content.replace(
-                    /\[\*?IMAGE (right|left|center)?: ([a-zA-Z0-9-_]+)(?::([\d%]+))?\*\]/g,
+                    imageRegex,
                     (_, alignment, imageId, size) => {
                         const imageIndex = imageIds.indexOf(imageId);
                         const imageUrl = imageUrls[imageIndex];
-                        const imageStyle = size ? `style="width: ${size}"` : '';
+                        const imageStyle = size ? `style="width: ${size};"` : "";
                         return `<img src="${imageUrl}" alt="Image" align="${alignment}" ${imageStyle} />`;
                     }
                 );
 
+                // Replace [br] with newline characters
+                const contentWithNewlines = contentWithImages.replace(/\[br\]/g, "<br />");
+
                 // Split the content into sections based on custom markers
-                const sectionMatches = contentWithImages.split(/\[\[([A-Å]+)\]\]/);
+                const sectionMatches = contentWithNewlines.split(/\[\[([A-Å]+)\]\]/);
                 const sectionsArray = [];
 
                 for (let i = 1; i < sectionMatches.length; i += 2) {
@@ -46,7 +55,7 @@ const GoogleDriveGetDocFile = ({ docFileId }) => {
 
                 setSections(sectionsArray);
             } catch (error) {
-                console.error('Error fetching document:', error);
+                console.error("Error fetching document:", error);
             }
         };
 
@@ -58,9 +67,7 @@ const GoogleDriveGetDocFile = ({ docFileId }) => {
             {sections.map((section, index) => (
                 <section key={index}>
                     <h2>{section.type}</h2>
-                    <div
-                        dangerouslySetInnerHTML={{ __html: section.content }}
-                    ></div>
+                    <div dangerouslySetInnerHTML={{ __html: section.content }}></div>
                 </section>
             ))}
         </div>
