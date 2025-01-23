@@ -1,0 +1,32 @@
+.section-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.text-container {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.image-container {
+    flex: 0 0 auto;
+    margin-left: 10px;
+}
+
+.image_left {
+    float: left;
+    margin-right: 10px;
+}
+
+.image_right {
+    float: right;
+    margin-left: 10px;
+}
+
+.image_center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

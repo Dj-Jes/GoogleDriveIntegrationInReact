@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { API_KEY } from "../SharedRecources";
 import GoogleDriveFetchImagesByIds from "./GoogleDriveFetchImagesByIds";
+import "../ImgClass.css";
 
 const GoogleDriveGetDocFile = ({ docFileId }) => {
     const [sections, setSections] = useState([]);
@@ -36,7 +37,7 @@ const GoogleDriveGetDocFile = ({ docFileId }) => {
                         const imageIndex = imageIds.indexOf(imageId);
                         const imageUrl = imageUrls[imageIndex];
                         const imageStyle = size ? `style="width: ${size};"` : "";
-                        return `<img src="${imageUrl}" alt="Image" align="${alignment}" ${imageStyle} />`;
+                        return `<div class="image-container"><img src="${imageUrl}" alt="Image" class="image_${alignment}" ${imageStyle} /></div>`;
                     }
                 );
 
@@ -67,7 +68,11 @@ const GoogleDriveGetDocFile = ({ docFileId }) => {
             {sections.map((section, index) => (
                 <section key={index}>
                     <h2>{section.type}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: section.content }}></div>
+                    <div className="section-content">
+                        {section.content.split('<br />').map((part, idx) => (
+                            <div key={idx} dangerouslySetInnerHTML={{ __html: part }}></div>
+                        ))}
+                    </div>
                 </section>
             ))}
         </div>
