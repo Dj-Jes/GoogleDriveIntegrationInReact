@@ -4,7 +4,7 @@ import ImageContainer from '../DataContainers/ImageContainer';
 import fetchImagesByIds from '../GoogleDriveFunctions/GoogleDriveFetchImagesByIds';
 
 const useImageCache = (imageIds, imagesPerPage, currentPage) => {
-    const imageContainer = useRef(new ImageContainer()); // Instantiate ImageContainer only once
+    const imageContainer = useRef(new ImageContainer()); 
     const [displayedImages, setDisplayedImages] = useState([]);
 
     useEffect(() => {

@@ -16,7 +16,7 @@ const GoogleDriveGetDocFile = ({ docFileId }) => {
                     throw new Error(`Error fetching document: ${response.statusText}`);
                 }
                 const content = await response.text();
-
+                
                 // Adjust regex for image placeholders
                 const imageRegex = /\[\*?IMAGE\s*(right|left|center)?\s*:\s*([a-zA-Z0-9-_]+)(?:\s*:\s*([\d%]+))?\*\]/g;
                 const imageMatches = [...content.matchAll(imageRegex)];
@@ -45,7 +45,7 @@ const GoogleDriveGetDocFile = ({ docFileId }) => {
                 const contentWithNewlines = contentWithImages.replace(/\[br\]/g, "<br />");
 
                 // Split the content into sections based on custom markers
-                const sectionMatches = contentWithNewlines.split(/\[\[([A-Å]+)\]\]/);
+                const sectionMatches = contentWithNewlines.split(/\[\[([\s\S]+?)\]\]/);
                 const sectionsArray = [];
 
                 for (let i = 1; i < sectionMatches.length; i += 2) {
